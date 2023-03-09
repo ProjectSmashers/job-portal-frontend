@@ -11,7 +11,7 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
 // Material Dashboard 2 React examples
-import DataTable from "examples/Tables/DataTable";
+import DataTable from "../tables/tableData";
 
 
 function JobList() {
@@ -72,17 +72,35 @@ function JobList() {
       </MDBox>
       <MDBox>
         <DataTable
-          table={{ columns: [
-      { Header: "companies", accessor: "companies", width: "45%", align: "left" },
-      { Header: "members", accessor: "members", width: "10%", align: "left" },
-      { Header: "budget", accessor: "budget", align: "center" },
-      { Header: "completion", accessor: "completion", align: "center" },
-    ],
+          table={{
+            columns: [
+              { Header: "companies", accessor: "companyName", width: "45%", align: "left" },
+              { Header: "members", accessor: "jobName", width: "10%", align: "left" },
+              { Header: "budget", accessor: "budget", align: "center" },
+              { Header: "completion", accessor: "completion", align: "center" },
+            ],
 
-    rows: [
-      //data here
-    ] 
-    }}
+            rows: [
+              {
+                companyName: (<MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+                  DEF COMPANY
+                </MDTypography>),
+                jobName: (<MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+                  CDE SSKIL
+                </MDTypography>),
+                status: (
+                  <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+                    23/04/18
+                  </MDTypography>
+                ),
+                appliedDate: (
+                  <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+                    Edit
+                  </MDTypography>
+                ),
+              },
+            ]
+          }}
           showTotalEntries={false}
           isSorted={false}
           noEndBorder
