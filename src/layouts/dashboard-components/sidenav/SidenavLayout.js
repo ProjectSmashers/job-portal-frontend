@@ -18,6 +18,8 @@ import { sideNavStyles } from "./sidenavStyle";
 
 function SidenavLayout({ icon, name }) {
 
+
+
   return (
     <ListItem component="li">
       <MDBox
@@ -26,7 +28,7 @@ function SidenavLayout({ icon, name }) {
         }
       >
         <ListItemIcon>
-          {typeof icon === "string" ? (<Icon>{icon}</Icon>)
+          {typeof icon === "string" ? (<Icon color="secondary" >{icon}</Icon>)
             : (icon)}
         </ListItemIcon>
 
@@ -37,11 +39,5 @@ function SidenavLayout({ icon, name }) {
     </ListItem>
   );
 }
-
-// Typechecking props for the SidenavCollapse
-SidenavLayout.propTypes = {
-  icon: PropTypes.node.isRequired,
-  name: PropTypes.string.isRequired,
-};
 
 export default SidenavLayout;

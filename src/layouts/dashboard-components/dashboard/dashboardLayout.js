@@ -14,12 +14,10 @@ import { useMaterialUIController, setLayout } from "context";
 
 function DashboardLayout({ children }) {
   const [controller, dispatch] = useMaterialUIController();
-  const { miniSidenav } = controller;
-  const { pathname } = useLocation();
 
   useEffect(() => {
     setLayout(dispatch, "dashboard");
-  }, [pathname]);
+  });
 
   return (
     <MDBox
@@ -28,11 +26,7 @@ function DashboardLayout({ children }) {
         position: "relative",
 
         [breakpoints.up("xl")]: {
-          marginLeft: miniSidenav ? pxToRem(120) : pxToRem(274),
-          transition: transitions.create(["margin-left", "margin-right"], {
-            easing: transitions.easing.easeInOut,
-            duration: transitions.duration.standard,
-          }),
+          marginLeft: pxToRem(274)
         },
       })}
     >

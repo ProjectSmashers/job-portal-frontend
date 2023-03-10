@@ -9,7 +9,7 @@ function sideNavStyles(theme) {
 
   return {
     background: transparent.main,
-    color: white.main,
+    color: "white.main",
     display: "flex",
     alignItems: "center",
     width: "100%",

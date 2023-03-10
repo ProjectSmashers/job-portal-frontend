@@ -1,4 +1,4 @@
-import {useEffect} from "react";
+import { useEffect } from "react";
 
 // react-router components
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
@@ -61,7 +61,6 @@ export default function App() {
       {layout === "dashboard" && (
         <>
           <Sidenav
-            color={sidenavColor}
             brandName="Material Dashboard 2"
             routes={routes}
           />

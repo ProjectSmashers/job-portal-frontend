@@ -3,9 +3,6 @@ import { useState, useEffect } from "react";
 // react-router components
 import { useLocation, Link } from "react-router-dom";
 
-// prop-types is a library for typechecking of props.
-import PropTypes from "prop-types";
-
 // @material-ui core components
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -20,14 +17,6 @@ import MDInput from "components/MDInput";
 // Material Dashboard 2 React example components
 import Breadcrumbs from "./breadCrumbs";
 import NotificationItem from "./notificationItem";
-
-// Custom styles for DashboardNavbar
-import {
-  navbar,
-  navbarContainer,
-  navbarRow,
-  navbarIconButton,
-} from "./dashboardNavbarStyles";
 
 
 function DashboardNavbar({ absolute, light, }) {
@@ -65,41 +54,46 @@ function DashboardNavbar({ absolute, light, }) {
 
   return (
     <AppBar
-      position={"absolute"}
+      position={"static"}
       color="inherit"
-      sx={(theme) => navbar(theme, { absolute, light })}
+      sx={{
+        display: "grid",
+        alignItems: "center",
+        borderRadius: 3,
+        paddingTop: 2,
+        paddingBottom: 2
+      }}
     >
-      <Toolbar sx={(theme) => navbarContainer(theme)}>
-        <MDBox color="inherit" mb={{ xs: 1, md: 0 }} sx={(theme) => navbarRow(theme, { light })}>
+      <Toolbar>
+        <MDBox color="inherit" mb={{ xs: 1, md: 0 }} display="flex" alignItems="center" justifyContent="stretch" width="max-content">
           <Breadcrumbs icon="home" title={route[route.length - 1]} route={route} light={light} />
         </MDBox>
         {
-          <MDBox sx={(theme) => navbarRow(theme, { light })}>
-            <MDBox pr={50}>
+          <MDBox>
+            <MDBox pr={50} >
               <MDInput label="Search here" />
             </MDBox>
+
             <MDBox color={"white"}>
               <Link to="/authentication/sign-in/">
-                <IconButton sx={navbarIconButton} size="small" disableRipple>
+                <IconButton
+                  size="medium"
+                  disableRipple
+                  color="inherit">
                   <Icon sx={iconsStyle}>account_circle</Icon>
                 </IconButton>
               </Link>
               <IconButton
-                size="small"
+                size="medium"
                 disableRipple
                 color="inherit"
-                sx={navbarIconButton}
               >
                 <Icon sx={iconsStyle}>settings</Icon>
               </IconButton>
               <IconButton
-                size="small"
+                size="medium"
                 disableRipple
                 color="inherit"
-                sx={navbarIconButton}
-                aria-controls="notification-menu"
-                aria-haspopup="true"
-                variant="contained"
                 onClick={handleOpenMenu}
               >
                 <Icon sx={iconsStyle}>notifications</Icon>
@@ -109,22 +103,8 @@ function DashboardNavbar({ absolute, light, }) {
           </MDBox>
         }
       </Toolbar>
-    </AppBar>
+    </AppBar >
   );
 }
-
-// Setting default values for the props of DashboardNavbar
-DashboardNavbar.defaultProps = {
-  absolute: false,
-  light: false,
-  isMini: false,
-};
-
-// Typechecking props for the DashboardNavbar
-DashboardNavbar.propTypes = {
-  absolute: PropTypes.bool,
-  light: PropTypes.bool,
-  isMini: PropTypes.bool,
-};
 
 export default DashboardNavbar;

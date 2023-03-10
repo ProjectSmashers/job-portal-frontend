@@ -12,7 +12,7 @@ import Icon from "@mui/material/Icon";
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
-function NavbarLink({ icon, name, route, light }) {
+function NavbarLink({ icon, name, route }) {
   return (
     <MDBox
       component={Link}
@@ -25,7 +25,7 @@ function NavbarLink({ icon, name, route, light }) {
     >
       <Icon
         sx={{
-          color: ({ palette: { white, secondary } }) => (light ? white.main : secondary.main),
+          color: ({ palette: { secondary } }) => (secondary.main),
           verticalAlign: "middle",
         }}
       >
@@ -34,7 +34,7 @@ function NavbarLink({ icon, name, route, light }) {
       <MDTypography
         variant="button"
         fontWeight="regular"
-        color={light ? "white" : "dark"}
+        color="dark"
         textTransform="capitalize"
         sx={{ width: "100%", lineHeight: 0 }}
       >
