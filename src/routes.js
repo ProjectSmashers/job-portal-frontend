@@ -24,7 +24,7 @@
 // Material Dashboard 2 React layouts
 import Dashboard from "./layouts/dashboard-components/dashboard/dashboard";
 import Profile from "./layouts/dashboard-components/profile/profile";
-import Tables from "./layouts/dashboard-components/tables/tables";
+import Tables from "./layouts/dashboard-components/tables/appliedJobTable";
 import Notifications from "./layouts/dashboard-components/notifications/notification";
 import SignIn from "layouts/authentication/signIn";
 import SignUp from "layouts/authentication/signUp";
@@ -52,8 +52,8 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Progress",
-    key: "progress",
+    name: "Available Job List",
+    key: "availableJobList",
     icon: <Icon fontSize="small">table_view</Icon>,
     route: "/tables",
     component: <Tables />,
