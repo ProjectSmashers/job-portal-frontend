@@ -89,7 +89,7 @@ const routes = [
     icon: <Icon fontSize="small">assignment</Icon>,
     route: "/authentication/reset-password",
     component: <ResetPassword />,
-  },
+  }
 ];
 
 export default routes;

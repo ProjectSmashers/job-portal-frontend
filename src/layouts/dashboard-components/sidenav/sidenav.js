@@ -18,7 +18,8 @@ import SidenavLayout from "./SidenavLayout";
 
 // Material Dashboard 2 React context
 import { useMaterialUIController } from "context";
-import SidenavRoot from "./SidenavRoot";
+import { Drawer } from "@mui/material";
+import { fontSize } from "@mui/system";
 
 function Sidenav({ brand, brandName, routes, }) {
   const { darkMode } = useMaterialUIController();
@@ -39,18 +40,20 @@ function Sidenav({ brand, brandName, routes, }) {
           key={key}
           target="_blank"
           rel="noreferrer"
-          sx={{ textDecoration: "none" }}
+          sx={{
+            textDecoration: "none"
+          }}
         >
           <SidenavLayout
             name={name}
             icon={icon}
-            active={key === collapseName}
+            active={key}
             noCollapse={noCollapse}
           />
         </Link>
       ) : (
         <NavLink key={key} to={route}>
-          <SidenavLayout name={name} icon={icon} active={key === collapseName} />
+          <SidenavLayout name={name} icon={icon} active={key} />
         </NavLink>
       );
     }
@@ -58,15 +61,21 @@ function Sidenav({ brand, brandName, routes, }) {
   });
 
   return (
-    <SidenavRoot
+    <Drawer
       variant="permanent"
       ownerState={{ darkMode }}
+      sx={{
+        "& .MuiDrawer-paper": {
+          color: 'white',
+          background: 'linear-gradient(to right bottom, #000, #0073e5)',
+        },
+      }}
     >
       <MDBox pt={3} pb={1} px={4} textAlign="center">
         <MDBox component={NavLink} to="/" display="flex" alignItems="center">
           {brand && <MDBox component="img" src={brand} alt="Brand" width="2rem" />}
           <MDBox
-            width={!brandName && "100%"}
+            width={"100%"}
           >
             <MDTypography component="h6" variant="button" fontWeight="medium" color={textColor}>
               {brandName}
@@ -76,7 +85,7 @@ function Sidenav({ brand, brandName, routes, }) {
       </MDBox>
       <List>{renderRoutes}</List>
 
-    </SidenavRoot>
+    </Drawer>
   );
 }
 
