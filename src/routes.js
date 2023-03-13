@@ -1,4 +1,3 @@
-
 /** 
   All of the routes for the Material Dashboard 2 React are added here,
   You can add a new route, customize the routes and delete the routes here.
@@ -29,7 +28,10 @@ import Notifications from "./layouts/dashboard-components/notifications/notifica
 import SignIn from "layouts/authentication/signIn";
 import SignUp from "layouts/authentication/signUp";
 import ResetPassword from "layouts/authentication/resetPassword";
+import CandidateBasic from "layouts/candidateDetails/CandidateBasic";
+import CompanyAbout from "layouts/companyDetails/CompanyAbout";
 import Homepage from "layouts/landing-page/homePage";
+
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -98,7 +100,23 @@ const routes = [
     icon: <Icon fontSize="small">assignment</Icon>,
     route: "/authentication/reset-password",
     component: <ResetPassword />,
-  }
+  },
+  {
+    type: "collapse",
+    name: "Candidate Details",
+    key: "candidate-details",
+    icon: <Icon fontSize="small">assignment</Icon>,
+    route: "/candidate-details",
+    component: <CandidateBasic />
+  },
+  {
+    type: "collapse",
+    name: "Company Details",
+    key: "company-details",
+    icon: <Icon fontSize="small">assignment</Icon>,
+    route: "/company-details",
+    component: <CompanyAbout />,
+  },
 ];
 
 export default routes;
