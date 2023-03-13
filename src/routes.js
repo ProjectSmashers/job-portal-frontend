@@ -30,12 +30,21 @@ import SignUp from "layouts/authentication/signUp";
 import ResetPassword from "layouts/authentication/resetPassword";
 import CandidateBasic from "layouts/candidateDetails/CandidateBasic";
 import CompanyAbout from "layouts/companyDetails/CompanyAbout";
+import Homepage from "layouts/landing-page/homePage";
 
 
 // @mui icons
 import Icon from "@mui/material/Icon";
 
 const routes = [
+  {
+    type: "collapse",
+    name: "Home",
+    key: "home",
+    icon: <Icon fontSize="small">Home</Icon>,
+    route: "/home",
+    component: <Homepage />,
+  },
   {
     type: "collapse",
     name: "Dashboard",
