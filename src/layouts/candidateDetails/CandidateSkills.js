@@ -19,45 +19,37 @@ import BasicLayout from "layouts/authentication/basicLayout";
 
 import Axios from "axios";
 
+
+import Cookies from "js-cookie";
+
 // Skills
 function CandidateSkills() {
-  // const [candidate, setCandidate] = useState({
-  //   // Educational Details
-  //   languages: "",
-  //   programmingLanguages: "",
-  //   tools: "",
-  // });
 
-  const [languages, setLanguages] = useState();
-  const [programmingLanguages, setProgrammingLanguages] = useState();
-  const [tools, setTools] = useState();
+  const [languages, setLanguages] = useState([]);
+  const [programmingLanguages, setProgrammingLanguages] = useState([]);
+  const [tools, setTools] = useState([]);
 
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setCandidate({
-  //     ...candidate,
-  //     [name]: value,
-  //   });
-  // };
 
   const save = () => {
-    // const {
-    //   languages,
-    //   programmingLanguages,
-    //   tools
-    // } = candidate;
+    
+    const cookieUserid = Cookies.get("Userid");
+    alert(cookieUserid);
+    if (cookieUserid) {
+      Axios.put(
+        `http://localhost:7000/api/candidates/${cookieUserid}/updateskillbycandidateid/`,
+        {
+          languages,
+          programmingLanguages,
+          tools,
+        }
+        // candidate
+      )
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    } else {
+      alert("Some Error Occured");
+    }
 
-    Axios.put(
-      "http://localhost:7000/api/candidates/63bac979734ecf4bfdbb1288/updateskillbycandidateid/",
-      {
-        languages,
-        programmingLanguages,
-        tools,
-      }
-      // candidate
-    )
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
   };
 
   return (

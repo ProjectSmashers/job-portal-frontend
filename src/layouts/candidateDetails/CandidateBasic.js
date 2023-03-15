@@ -21,15 +21,21 @@ import Axios from "axios";
 import CandidateEdu from "./CandidateEdu";
 import { Navigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+
+
+import Cookies from "js-cookie";
+
 //Basic Details
 function CandidateBasic() {
   const [candidate, setCandidate] = useState({
     // Basic Details
-    languages: "",
-    programmingLanguages: "",
-    tools: "",
-    passingYear: "",
-    aggregate: "",
+
+    dateOfBirth: "",
+    address: "",
+    gender: "",
+    mobileNo: "",
+    bio: "",
+
   });
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -40,16 +46,35 @@ function CandidateBasic() {
   };
 
   const save = () => {
-    const { languages, programmingLanguages, tools, passingYear, aggregate } =
-      candidate;
-      sessionStorage.setItem("candidateId", "63bac979734ecf4bfdbb1288");
-      let candidateId = sessionStorage.getItem("candidateId");
-    Axios.put(
-      "http://localhost:7000/api/candidates/63bac979734ecf4bfdbb1288/basicdetail/",
-      candidate
-    )
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+
+    const {
+      dateOfBirth,
+      programmingdateOfBirth,
+      gender,
+      passingYear,
+      aggregate,
+    } = candidate;
+
+    const cookieUserid = Cookies.get('Userid')
+    alert(cookieUserid);
+    if(cookieUserid)
+    {
+      Axios.put(
+     
+        `http://localhost:7000/api/candidates/${cookieUserid}/basicdetail/`,
+        candidate
+      )
+        .then((res) => {
+          console.log(res);
+          alert("Basic Details Saved");
+        })
+        .catch((err) => console.log(err));
+    }    
+    else{
+      alert("Some Error Occured.")
+    }
+    
+
   };
 
   return (
@@ -67,7 +92,8 @@ function CandidateBasic() {
           textAlign="center"
         >
           <MDTypography variant="h4" fontWeight="medium" color="white" mt={1}>
-            Fill Candidate Details
+            Fill Candidate Basic Details
+
           </MDTypography>
         </MDBox>
 
@@ -76,9 +102,11 @@ function CandidateBasic() {
             <MDBox mb={2}>
               <MDInput
                 type="text"
-                name="languages"
-                value={candidate.languages}
-                label="DOB"
+
+                name="dateOfBirth"
+                value={candidate.dateOfBirth}
+                label="DOB (YYYY-MM-DD)"
+
                 fullWidth
                 onChange={handleChange}
               />
@@ -87,10 +115,12 @@ function CandidateBasic() {
             <MDBox mb={2}>
               <MDInput
                 type="text"
-                name="programmingLanguages"
-                value={candidate.programmingLanguages}
-                label="programmingLanguages"
+                name="address"
+                value={candidate.address}
+                label="Address"
                 fullWidth
+                multiline
+
                 onChange={handleChange}
               />
             </MDBox>
@@ -98,9 +128,11 @@ function CandidateBasic() {
             <MDBox mb={2}>
               <MDInput
                 type="text"
-                name="tools"
-                value={candidate.tools}
-                label="tools"
+
+                name="gender"
+                value={candidate.gender}
+                label="Gender (Male/Female/Others)"
+
                 fullWidth
                 onChange={handleChange}
               />
@@ -109,11 +141,10 @@ function CandidateBasic() {
             <MDBox mb={2}>
               <MDInput
                 type="number"
-                name="passingYear"
-                value={candidate.passingYear}
+                name="mobileNo"
+                value={candidate.mobileNo}
                 label="Mobile no."
                 fullWidth
-                multiline
                 onChange={handleChange}
               />
             </MDBox>
@@ -121,9 +152,11 @@ function CandidateBasic() {
             <MDBox mb={2}>
               <MDInput
                 type="text"
-                name="aggregate"
-                value={candidate.aggregate}
-                label="aggregate"
+
+                name="bio"
+                value={candidate.bio}
+                label="Bio"
+
                 fullWidth
                 onChange={handleChange}
               />
@@ -150,7 +183,6 @@ function CandidateBasic() {
                 Candidate Education
               </MDButton>
             </MDBox>
-            
           </MDBox>
         </MDBox>
       </Card>

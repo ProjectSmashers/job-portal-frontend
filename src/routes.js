@@ -31,6 +31,9 @@ import ResetPassword from "layouts/authentication/resetPassword";
 import CandidateBasic from "layouts/candidateDetails/CandidateBasic";
 import CompanyAbout from "layouts/companyDetails/CompanyAbout";
 import Homepage from "layouts/landing-page/homePage";
+import CandidateBasic from "layouts/candidateDetails/CandidateBasic";
+import CompanyAbout from "layouts/companyDetails/CompanyAbout";
+
 
 
 // @mui icons
@@ -99,7 +102,8 @@ const routes = [
     key: "reset-password",
     icon: <Icon fontSize="small">assignment</Icon>,
     route: "/authentication/reset-password",
-    component: <ResetPassword />,
+    component: <ResetPassword />
+
   },
   {
     type: "collapse",

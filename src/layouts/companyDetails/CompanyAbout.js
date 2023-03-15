@@ -18,6 +18,9 @@ import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 import BasicLayout from "layouts/authentication/basicLayout";
 
 import Axios from "axios";
+
+import Cookies from "js-cookie";
+
 // Head Count, Established Year, About Company
 
 function CompanyAbout() {
@@ -25,17 +28,26 @@ function CompanyAbout() {
   const [establishedYear, setEstablishedYear] = useState();
   const [aboutCompany, setAboutCompany] = useState();
 
+
+  const cookieUserid = Cookies.get("Userid");
+  alert(cookieUserid);
+
   const save = () => {
-    Axios.put(
-      "http://localhost:7000/api/company/6405953e13e0468686ee043d/companydetails/",
-      {
-        hrEmail,
-        establishedYear,
-        aboutCompany,
-      }
-    )
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    if (cookieUserid) {
+      Axios.put(
+        `http://localhost:7000/api/company/${cookieUserid}/companydetails/`,
+        {
+          hrEmail,
+          establishedYear,
+          aboutCompany,
+        }
+      )
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    } else {
+      alert("Some Error Occured");
+    }
+
   };
 
   return (
