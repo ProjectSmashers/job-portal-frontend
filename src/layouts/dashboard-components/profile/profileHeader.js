@@ -80,17 +80,8 @@ function ProfileHeader({ children }) {
           <Grid item>
             <MDAvatar src={""} alt="profile-image" size="xl" shadow="sm" />
           </Grid>
-          <Grid item>
-            <MDBox height="100%" mt={0.5} lineHeight={1}>
-              <MDTypography variant="h5" fontWeight="medium">
-                Candidate Name
-              </MDTypography>
-              <MDTypography variant="button" color="text" fontWeight="regular">
-                Status
-              </MDTypography>
-            </MDBox>
-          </Grid>
-          <Grid item xs={12} md={6} lg={4} sx={{ ml: "auto" }}>
+
+          {/* <Grid item xs={12} md={6} lg={4} sx={{ ml: "auto" }}>
             <AppBar position="static">
               <Tabs orientation={tabsOrientation} value={tabValue} onChange={handleSetTabValue}>
                 <Tab
@@ -119,7 +110,7 @@ function ProfileHeader({ children }) {
                 />
               </Tabs>
             </AppBar>
-          </Grid>
+          </Grid> */}
         </Grid>
         {children}
       </Card>

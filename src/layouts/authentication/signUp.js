@@ -55,10 +55,10 @@ function SignUp() {
         email,
         password,
       })
-      .then((res) => {
-        console.log(res)
-        alert("Register successful")
-      })
+        .then((res) => {
+          console.log(res)
+          alert("Register successful")
+        })
         .catch((err) => console.log(err));
     } else alert("Please Fill Form Correclty");
   };
@@ -121,25 +121,16 @@ function SignUp() {
               />
             </MDBox>
 
+
+
             <MDBox display="flex" alignItems="right" ml={0.6}>
-              <RadioGroup
-                sx={{ flexDirection: "row" }}
-                name="type"
-                value={user.type}
-                onChange={handleChange}
-              >
-                <FormControlLabel
-                  value="candidate"
-                  control={<Radio />}
-                  label="Candidate"
-                />
-                <FormControlLabel
-                  value="company"
-                  control={<Radio />}
-                  label="Company"
-                />
+
+              <RadioGroup sx={{ flexDirection: 'row' }} name="type" value={user.type} onChange={handleChange}>
+                <FormControlLabel value="candidate" control={<Radio />} label="Candidate" />
+                <FormControlLabel value="company" control={<Radio />} label="Company" />
               </RadioGroup>
             </MDBox>
+
 
             <MDBox display="flex" alignItems="center" ml={-1}>
               <Checkbox />

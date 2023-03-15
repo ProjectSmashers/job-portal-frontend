@@ -14,7 +14,7 @@ import MDTypography from "components/MDTypography";
 // Material Dashboard 2 React base styles
 import typography from "assets/theme/base/typography";
 
-function Footer({ light }) {
+function Footer() {
   const { size } = typography;
 
   return (
@@ -33,14 +33,15 @@ function Footer({ light }) {
             justifyContent="center"
             alignItems="center"
             flexWrap="wrap"
-            color={light ? "white" : "text"}
-            fontSize={size.sm}
+            color={"text"}
+            fontSize={size.md}
           >
-          Add A Message Here
+            A Website That Connects Job Seekers & Job Providers.
           </MDBox>
+
           <MDBox
             component="ul"
-            sx={({ breakpoints }) => ({
+            sx={() => ({
               display: "flex",
               flexWrap: "wrap",
               alignItems: "center",
@@ -49,27 +50,25 @@ function Footer({ light }) {
               mt: 3,
               mb: 0,
               p: 0,
-
-              [breakpoints.up("lg")]: {
-                mt: 0,
-              },
             })}
           >
-            <MDBox component="li" pr={2} lineHeight={1}>
-                <MDTypography
-                  variant="button"
-                  fontWeight="regular"
-                  color="white"
-                >
-                  Project Smashers
-                </MDTypography>
+            <MDBox component="li" pr={2} lineHeight={1} justifyContent="center" alignItems="center">
+              <MDTypography
+                variant="button"
+                fontWeight="regular"
+                color="text"
+                fontSize={size.md}
+              >
+                Project Smashers
+              </MDTypography>
             </MDBox>
             <MDBox component="li" px={2} lineHeight={1}>
               <Link href="" target="_blank">
                 <MDTypography
                   variant="button"
                   fontWeight="regular"
-                  color="white"
+                  color="text"
+                  fontSize={size.md}
                 >
                   About Us
                 </MDTypography>
@@ -80,7 +79,8 @@ function Footer({ light }) {
                 <MDTypography
                   variant="button"
                   fontWeight="regular"
-                  color="white"
+                  color="text"
+                  fontSize={size.md}
                 >
                   Blog
                 </MDTypography>
@@ -91,7 +91,8 @@ function Footer({ light }) {
                 <MDTypography
                   variant="button"
                   fontWeight="regular"
-                  color="white"
+                  color="text"
+                  fontSize={size.md}
                 >
                   License
                 </MDTypography>

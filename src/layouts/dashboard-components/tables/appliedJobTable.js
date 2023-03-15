@@ -40,74 +40,49 @@ function Tables() {
                 <DataTable
                   table={{
                     columns: [
-                      { Header: "company name", accessor: "companyName", align: "center" },
-                      { Header: "job name", accessor: "jobName", align: "left" },
-                      { Header: "description", accessor: "description", width: "45%", align: "left" },
-                      { Header: "status", accessor: "status", align: "center" },
-                      { Header: "applied Date", accessor: "appliedDate", align: "center" }
+                      { Header: "Company Name", accessor: "companyName", width: "45%", align: "left" },
+                      { Header: "Job Description", accessor: "jobDescription", width: "10%", align: "left" },
+                      { Header: "Type Of Job", accessor: "typeOfJob", align: "center" },
+                      { Header: "Mode Of Job", accessor: "modeOfJob", align: "center" },
+                      { Header: "Responsibility", accessor: "responsibility", align: "center" },
+                      { Header: "Requirment", accessor: "requirment", align: "center" },
                     ],
 
                     rows: [
                       {
                         companyName: (<MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-                        DEF COMPANY
+                          DEF COMPANY
                         </MDTypography>),
-                        jobName: (<MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-                        CDE SSKIL
+                        jobDescription: (<MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+                          CDE SSKIL
                         </MDTypography>),
-                        status: (
+                        typeOfJob: (
                           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
                             23/04/18
                           </MDTypography>
                         ),
-                        appliedDate: (
+                        modeOfJob: (
                           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
                             Edit
+                          </MDTypography>
+                        ),
+                        responsibility: (
+                          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+                            23/04/18
+                          </MDTypography>
+                        ),
+                        requirment: (
+                          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+                            23/04/18
                           </MDTypography>
                         ),
                       },
                       {
                         companyName: (<MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-                        ABC COMPANY
+                          ABC COMPANY
                         </MDTypography>),
                         jobName: (<MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-                        CDE SSKIL
-                        </MDTypography>),
-                        status: (
-                          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-                            23/04/18
-                          </MDTypography>
-                        ),
-                        appliedDate: (
-                          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-                            Edit
-                          </MDTypography>
-                        ),
-                      },
-                      {
-                        companyName: (<MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-                        DEF COMPANY
-                        </MDTypography>),
-                        jobName: (<MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-                        CDE SSKIL
-                        </MDTypography>),
-                        status: (
-                          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-                            23/04/18
-                          </MDTypography>
-                        ),
-                        appliedDate: (
-                          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-                            Edit
-                          </MDTypography>
-                        ),
-                      },
-                      {
-                        companyName: (<MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-                        DEF COMPANY
-                        </MDTypography>),
-                        jobName: (<MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-                        CDE SSKIL
+                          CDE SSKIL
                         </MDTypography>),
                         status: (
                           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">

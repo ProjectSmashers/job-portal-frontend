@@ -10,14 +10,14 @@ import PropTypes from "prop-types";
 import MDBox from "components/MDBox";
 
 // Material Dashboard 2 React context
-import { useMaterialUIController, setLayout } from "context";
+import { useMaterialUIController, setLayout } from "context/sidenavcontext";
 
 function DashboardLayout({ children }) {
   const [controller, dispatch] = useMaterialUIController();
 
   useEffect(() => {
     setLayout(dispatch, "dashboard");
-  });
+  }, []);
 
   return (
     <MDBox

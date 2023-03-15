@@ -9,11 +9,6 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDButton from "components/MDButton";
 
-// Material Kit 2 React examples
-import DefaultNavbar from "../authentication/navbar";
-
-// Routes
-import routes from "routes";
 
 // Images
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";

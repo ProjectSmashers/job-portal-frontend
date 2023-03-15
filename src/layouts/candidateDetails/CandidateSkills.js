@@ -67,7 +67,7 @@ function CandidateSkills() {
           textAlign="center"
         >
           <MDTypography variant="h4" fontWeight="medium" color="white" mt={1}>
-            Fill Candidate Details
+            Enter Your Skills
           </MDTypography>
         </MDBox>
 
@@ -81,7 +81,7 @@ function CandidateSkills() {
                 label="Languages"
                 fullWidth
                 onChange={(event) => setLanguages(event.target.value)}
-                //onChange={handleChange}
+              //onChange={handleChange}
               />
             </MDBox>
 
@@ -95,7 +95,7 @@ function CandidateSkills() {
                 onChange={(event) =>
                   setProgrammingLanguages(event.target.value)
                 }
-                // onChange={handleChange}
+              // onChange={handleChange}
               />
             </MDBox>
 
@@ -107,7 +107,7 @@ function CandidateSkills() {
                 label="Tools"
                 fullWidth
                 onChange={(event) => setTools(event.target.value)}
-                // onChange={handleChange}
+              // onChange={handleChange}
               />
             </MDBox>
 

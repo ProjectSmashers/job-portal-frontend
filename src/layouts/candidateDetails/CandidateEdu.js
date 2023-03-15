@@ -5,7 +5,6 @@ import { useState } from "react";
 
 // @mui material components
 import Card from "@mui/material/Card";
-import Checkbox from "@mui/material/Checkbox";
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
@@ -64,17 +63,16 @@ function CandidateEdu() {
 
     const cookieUserid = Cookies.get('Userid')
     alert(cookieUserid);
-    if(cookieUserid)
-    {
-    Axios.put(
-      `http://localhost:7000/api/candidates/${cookieUserid}/updateeducationbycandidateid/`,
-      candidate
-    )
-      .then((res) => {
-        console.log(res)
-        alert("Education Saved")
-      })
-      .catch((err) => console.log(err));
+    if (cookieUserid) {
+      Axios.put(
+        `http://localhost:7000/api/candidates/${cookieUserid}/updateeducationbycandidateid/`,
+        candidate
+      )
+        .then((res) => {
+          console.log(res)
+          alert("Education Saved")
+        })
+        .catch((err) => console.log(err));
     }
     else {
       alert("Some error occured")
@@ -97,7 +95,7 @@ function CandidateEdu() {
           textAlign="center"
         >
           <MDTypography variant="h4" fontWeight="medium" color="white" mt={1}>
-            Fill Candidate Details
+            Enter Education Details
           </MDTypography>
         </MDBox>
 

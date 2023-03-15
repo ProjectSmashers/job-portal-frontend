@@ -16,12 +16,8 @@ import MDTypography from "components/MDTypography";
 // Custom styles for the MDSnackbar
 import MDSnackbarIconRoot from "components/MDSnackbar/MDSnackbarIconRoot";
 
-// Material Dashboard 2 React context
-import { useMaterialUIController } from "context";
 
 function MDSnackbar({ color, icon, title, dateTime, content, close, bgWhite, ...rest }) {
-  const [controller] = useMaterialUIController();
-  const { darkMode } = controller;
 
   let titleColor;
   let dateTimeColor;
@@ -32,8 +28,8 @@ function MDSnackbar({ color, icon, title, dateTime, content, close, bgWhite, ...
     dateTimeColor = "dark";
     dividerColor = false;
   } else if (color === "light") {
-    titleColor = darkMode ? "inherit" : "dark";
-    dateTimeColor = darkMode ? "inherit" : "text";
+    titleColor = "dark";
+    dateTimeColor = "text";
     dividerColor = false;
   } else {
     titleColor = "white";
