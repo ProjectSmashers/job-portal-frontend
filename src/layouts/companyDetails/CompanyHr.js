@@ -30,7 +30,7 @@ function CompanyHr() {
 
 
   const cookieUserid = Cookies.get("Userid");
-  alert(cookieUserid);
+  // alert(cookieUserid);
 
   
   const save = () => {
