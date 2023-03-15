@@ -24,20 +24,20 @@ import Cookies from "js-cookie";
 // Head Count, Established Year, About Company
 
 function CompanyAbout() {
-  const [hrEmail, sethrEmail] = useState();
+  const [headCount, setHeadCount] = useState();
   const [establishedYear, setEstablishedYear] = useState();
   const [aboutCompany, setAboutCompany] = useState();
 
 
   const cookieUserid = Cookies.get("Userid");
-  alert(cookieUserid);
+  // alert(cookieUserid);
 
   const save = () => {
     if (cookieUserid) {
       Axios.put(
         `http://localhost:7000/api/company/${cookieUserid}/companydetails/`,
         {
-          hrEmail,
+          headCount,
           establishedYear,
           aboutCompany,
         }
@@ -74,11 +74,11 @@ function CompanyAbout() {
             <MDBox mb={2}>
               <MDInput
                 type="number"
-                name="hrEmail"
-                value={hrEmail}
+                name="headCount"
+                value={headCount}
                 label="Head Count"
                 fullWidth
-                onChange={(event) => sethrEmail(event.target.value)}
+                onChange={(event) => setHeadCount(event.target.value)}
                 // onChange={handleChange}
               />
             </MDBox>

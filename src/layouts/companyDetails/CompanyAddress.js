@@ -29,13 +29,14 @@ function CompanyAddress() {
 
   
 
-  const [establishedYear, setEstablishedYear] = useState();
-  const [aboutCompany, setAboutCompany] = useState();
+  const [state, setState] = useState();
+  const [city, setCity] = useState();
+  const [pinCode, setPinCode] = useState();
   const [addressLine1, setAddressLine1] = useState();
 
 
   const cookieUserid = Cookies.get("Userid");
-  alert(cookieUserid);
+  //alert(cookieUserid);
 
   
   const save = () => {
@@ -44,8 +45,9 @@ function CompanyAddress() {
       Axios.put(
         `http://localhost:7000/api/company/${cookieUserid}/updateaddressbyid/`,
         {
-          establishedYear,
-          aboutCompany,
+          state,
+          city,
+          pinCode,
           addressLine1,
         }
       )
@@ -84,11 +86,23 @@ function CompanyAddress() {
             <MDBox mb={2}>
               <MDInput
                 type="text"
-                name="establishedYear"
-                value={establishedYear}
-                label="establishedYear"
+                name="state"
+                value={state}
+                label="state"
                 fullWidth
-                onChange={(event) => setEstablishedYear(event.target.value)}
+                onChange={(event) => setState(event.target.value)}
+                // onChange={handleChange}
+              />
+            </MDBox>
+
+            <MDBox mb={2}>
+              <MDInput
+                type="text"
+                name="city"
+                value={city}
+                label="City"
+                fullWidth
+                onChange={(event) => setCity(event.target.value)}
                 // onChange={handleChange}
               />
             </MDBox>
@@ -96,11 +110,11 @@ function CompanyAddress() {
             <MDBox mb={2}>
               <MDInput
                 type="number"
-                name="aboutCompany"
-                value={aboutCompany}
+                name="pinCode"
+                value={pinCode}
                 label="Pin Code"
                 fullWidth
-                onChange={(event) => setAboutCompany(event.target.value)}
+                onChange={(event) => setPinCode(event.target.value)}
                 // onChange={handleChange}
               />
             </MDBox>

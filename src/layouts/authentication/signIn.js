@@ -68,7 +68,7 @@ function SignIn() {
           { email, password },
           { withCredentials: true }
         ).then((response) => {
-          consloe.log(response);
+          console.log(response);
           // SetCookie("userIn", JSON.stringify(response.data))
           navigate("/dashboard");
         });
@@ -175,8 +175,10 @@ function SignIn() {
                   color="info"
                   fontWeight="medium"
                   textGradient
+
+
                 >
-                  Sign up
+                  Sign In
                 </MDTypography>
               </MDTypography>
             </MDBox>

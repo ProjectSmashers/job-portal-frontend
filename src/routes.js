@@ -31,8 +31,7 @@ import ResetPassword from "layouts/authentication/resetPassword";
 import CandidateBasic from "layouts/candidateDetails/CandidateBasic";
 import CompanyAbout from "layouts/companyDetails/CompanyAbout";
 import Homepage from "layouts/landing-page/homePage";
-import CandidateBasic from "layouts/candidateDetails/CandidateBasic";
-import CompanyAbout from "layouts/companyDetails/CompanyAbout";
+
 
 
 

@@ -35,7 +35,7 @@ function CompanyJobPost() {
 
 
   const cookieUserid = Cookies.get("Userid");
-  alert(cookieUserid);
+  // alert(cookieUserid);
 
   
   const save = () => {
@@ -165,9 +165,9 @@ function CompanyJobPost() {
             <MDBox mb={2}>
               <MDInput
                 type="text"
-                name="programmingLanguages"
+                name="tool"
                 value={tool}
-                label="Programming Languages"
+                label="Tools"
                 fullWidth
                 onChange={(event) => setTool(event.target.value)}
                 // onChange={handleChange}
