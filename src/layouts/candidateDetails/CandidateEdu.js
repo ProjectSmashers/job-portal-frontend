@@ -23,16 +23,20 @@ import Stack from '@mui/material/Stack';
 import FolderIcon from '@mui/icons-material/Folder';
 import PageviewIcon from '@mui/icons-material/Pageview';
 
+
 import Cookies from "js-cookie";
+
 
 //Educational Details
 
 function CandidateEdu() {
   const [candidate, setCandidate] = useState({
     // Educational Details
+
     nameOfInstitute: "",
     nameOfUniversity: "",
     stream: "",
+
     admissionYear: "",
     passingYear: "",
     aggregate: "",
@@ -47,13 +51,16 @@ function CandidateEdu() {
 
   const save = () => {
     const {
+
       nameOfInstitute,
       nameOfUniversity,
       stream,
+
       admissionYear,
       passingYear,
       aggregate,
     } = candidate;
+
 
     const cookieUserid = Cookies.get('Userid')
     alert(cookieUserid);
@@ -72,6 +79,7 @@ function CandidateEdu() {
     else {
       alert("Some error occured")
     }
+
   };
 
   return (
@@ -98,8 +106,10 @@ function CandidateEdu() {
             <MDBox mb={2}>
               <MDInput
                 type="text"
+
                 name="nameOfInstitute"
                 value={candidate.nameOfInstitute}
+
                 label="Name of Institute"
                 fullWidth
                 onChange={handleChange}
@@ -109,8 +119,10 @@ function CandidateEdu() {
             <MDBox mb={2}>
               <MDInput
                 type="text"
+
                 name="nameOfUniversity"
                 value={candidate.nameOfUniversity}
+
                 label="Name of University"
                 fullWidth
                 onChange={handleChange}
@@ -120,9 +132,11 @@ function CandidateEdu() {
             <MDBox mb={2}>
               <MDInput
                 type="text"
+
                 name="stream"
                 value={candidate.stream}
                 label="Stream"
+
                 fullWidth
                 onChange={handleChange}
               />

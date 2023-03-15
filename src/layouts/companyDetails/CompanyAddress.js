@@ -20,14 +20,19 @@ import BasicLayout from "layouts/authentication/basicLayout";
 import Axios from "axios";
 import Cookies from "js-cookie";
 
+
 // Company Address
 
 function CompanyAddress() {
 
 
+
+  
+
   const [establishedYear, setEstablishedYear] = useState();
   const [aboutCompany, setAboutCompany] = useState();
   const [addressLine1, setAddressLine1] = useState();
+
 
   const cookieUserid = Cookies.get("Userid");
   alert(cookieUserid);
@@ -52,6 +57,7 @@ function CompanyAddress() {
     }
 
     
+
   };
 
   return (

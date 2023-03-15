@@ -27,6 +27,7 @@ import CompanyAbout from "layouts/companyDetails/CompanyAbout";
 import CompanyHr from "layouts/companyDetails/CompanyHr";
 import CompanyJobPost from "layouts/companyDetails/CompanyJobPost";
 
+
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
   const { direction, layout, sidenavColor } = controller;
@@ -82,6 +83,7 @@ export default function App() {
         <Route path="/company-address" element={<CompanyAddress/>} />
         <Route path="/company-hr" element={<CompanyHr/>} />
         <Route path="/company-job-post" element={<CompanyJobPost/>} />
+
       </Routes>
     </ThemeProvider>
   );

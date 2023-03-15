@@ -28,9 +28,12 @@ import Notifications from "./layouts/dashboard-components/notifications/notifica
 import SignIn from "layouts/authentication/signIn";
 import SignUp from "layouts/authentication/signUp";
 import ResetPassword from "layouts/authentication/resetPassword";
+import CandidateBasic from "layouts/candidateDetails/CandidateBasic";
+import CompanyAbout from "layouts/companyDetails/CompanyAbout";
 import Homepage from "layouts/landing-page/homePage";
 import CandidateBasic from "layouts/candidateDetails/CandidateBasic";
 import CompanyAbout from "layouts/companyDetails/CompanyAbout";
+
 
 
 // @mui icons
@@ -100,6 +103,7 @@ const routes = [
     icon: <Icon fontSize="small">assignment</Icon>,
     route: "/authentication/reset-password",
     component: <ResetPassword />
+
   },
   {
     type: "collapse",

@@ -19,6 +19,7 @@ import BasicLayout from "layouts/authentication/basicLayout";
 
 import Axios from "axios";
 
+
 import Cookies from "js-cookie";
 
 // Skills
@@ -48,6 +49,7 @@ function CandidateSkills() {
     } else {
       alert("Some Error Occured");
     }
+
   };
 
   return (

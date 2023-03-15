@@ -18,13 +18,16 @@ import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 import BasicLayout from "layouts/authentication/basicLayout";
 
 import Axios from "axios";
+
 import Cookies from "js-cookie";
+
 // Head Count, Established Year, About Company
 
 function CompanyAbout() {
   const [hrEmail, sethrEmail] = useState();
   const [establishedYear, setEstablishedYear] = useState();
   const [aboutCompany, setAboutCompany] = useState();
+
 
   const cookieUserid = Cookies.get("Userid");
   alert(cookieUserid);
@@ -44,6 +47,7 @@ function CompanyAbout() {
     } else {
       alert("Some Error Occured");
     }
+
   };
 
   return (
