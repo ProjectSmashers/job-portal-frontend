@@ -20,7 +20,6 @@ import BasicLayout from "./basicLayout";
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 
 import Axios from "axios";
-import Cookies from "js-cookie";
 import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
 
 function SignIn() {
@@ -55,11 +54,9 @@ function SignIn() {
       )
         .then((res) => {
           console.log(res);
-          const cookieUserid = Cookies.get("Userid");
-          alert(cookieUserid);
+          SetCookie("userIn", JSON.stringify(response.data))
           navigate("/dashboard");
         })
-        // .then(const myVariable = sessionStorage.getItem('myVariableKey'))
         .catch((err) => console.log(err));
     } else if (email && password && type === "company") {
       try {
@@ -70,7 +67,7 @@ function SignIn() {
         )
           .then((response) => {
             consloe.log(response);
-            // SetCookie("userIn", JSON.stringify(response.data))
+            SetCookie("userIn", JSON.stringify(response.data))
             navigate("/dashboard");
           });
       } catch (error) {

@@ -12,11 +12,26 @@ import ComplexStatisticsCard from "./complexStatisticsCard";
 
 // Dashboard components
 import JobList from "./jobList";
+import { useEffect, useState } from "react";
+
+import Axios from "axios";
 
 
 
 function Dashboard() {
 
+  const [totalJobs, setTotalJobs] = useState('');
+
+  useEffect(() => {
+    Axios.get(
+      "http://localhost:7000/api/candidates/jobs/getalljobsno",
+      { withCredentials: true }
+    )
+      .then((res) => {
+        console.log(res.data.data);
+        setTotalJobs(res.data.data);
+      })
+  })
 
   return (
     <DashboardLayout>
@@ -28,8 +43,8 @@ function Dashboard() {
               <ComplexStatisticsCard
                 color="dark"
                 icon="weekend"
-                title="Bookings"
-                count={281}
+                title="Total Jobs"
+                count={totalJobs}
                 percentage={{
                   color: "success",
                   amount: "+55%",

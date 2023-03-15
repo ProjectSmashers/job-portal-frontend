@@ -16,6 +16,7 @@ import BasicLayout from "../authentication/basicLayout";
 import MDInput from "components/MDInput";
 import { Facebook, GitHub, Instagram, Twitter } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import SearchBar from "components/searchBar/searchBar";
 
 function AboutUs() {
   return (
@@ -35,16 +36,14 @@ function AboutUs() {
             color="white"
 
           >
-            Work with an amazing design
+            Search Your Dream Job, Right Here, Right Now
           </MDTypography>
 
-          <MDBox position="relative" alignItems="center"  >
+          <SearchBar>
             <MDInput />
-          </MDBox>
+          </SearchBar>
 
           <MDTypography variant="body1" color="white" opacity={0.8} mt={15} mb={3} >
-            We&apos;re constantly trying to express ourselves and actualize our dreams. If you
-            have the opportunity to play this game
           </MDTypography>
           <MDButton component={Link} to="/authentication/sign-up" color="default" sx={{ color: ({ palette: { dark } }) => dark.main }}>
             create account
