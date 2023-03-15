@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 // react-router-dom components
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // @mui material components
 import Card from "@mui/material/Card";
@@ -21,6 +21,7 @@ import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 
 import Axios from "axios";
 import Cookies from "js-cookie";
+import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
 
 function SignIn() {
   const [rememberMe, setRememberMe] = useState(false);
@@ -29,36 +30,53 @@ function SignIn() {
 
   const [user, setUser] = useState({
     email: "",
-    password: ""
-  })
+    password: "",
+    type: "",
+  });
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setUser({
       ...user,
-      [name]: value
-    })
-  }
+      [name]: value,
+    });
+  };
+
+  const navigate = useNavigate();
+
   const login = () => {
+    const { email, password, type } = user;
 
-    const { email, password } = user
-
-    if (email && password) {
-      Axios.post('http://localhost:7000/api/candidates/login', user, {withCredentials : true})
-        .then(res => 
-          {
-            console.log(res)
-            // const myVariable = sessionStorage.getItem('token');
-            // console.log(myVariable);
-            const cookieUserid = Cookies.get('Userid')
-            alert(cookieUserid);
-          })
+    if (email && password && type === "candidate") {
+      Axios.post(
+        "http://localhost:7000/api/candidates/login",
+        { email, password },
+        { withCredentials: true }
+      )
+        .then((res) => {
+          console.log(res);
+          const cookieUserid = Cookies.get("Userid");
+          alert(cookieUserid);
+          navigate("/dashboard");
+        })
         // .then(const myVariable = sessionStorage.getItem('myVariableKey'))
-        .catch(err => console.log(err))
-    }
-    else
-      alert("Please Fill Form Correclty")
-  }
+        .catch((err) => console.log(err));
+    } else if (email && password && type === "company") {
+      try {
+        Axios.post(
+          "http://localhost:7000/api/company/login",
+          { email, password },
+          { withCredentials: true }
+        ).then((response) => {
+          consloe.log(response);
+          // SetCookie("userIn", JSON.stringify(response.data))
+          navigate("/dashboard");
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    } else alert("Please Fill Form Correclty");
+  };
 
   return (
     <BasicLayout image={bgImage}>
@@ -79,15 +97,48 @@ function SignIn() {
           </MDTypography>
         </MDBox>
 
-
         <MDBox pt={4} pb={3} px={3}>
           <MDBox component="form" role="form">
             <MDBox mb={2}>
-              <MDInput type="email" name="email" value={user.email} label="Email" fullWidth onChange={handleChange} />
+              <MDInput
+                type="email"
+                name="email"
+                value={user.email}
+                label="Email"
+                fullWidth
+                onChange={handleChange}
+              />
             </MDBox>
 
             <MDBox mb={2}>
-              <MDInput type="password" name="password" value={user.password} label="Password" fullWidth onChange={handleChange} />
+              <MDInput
+                type="password"
+                name="password"
+                value={user.password}
+                label="Password"
+                fullWidth
+                onChange={handleChange}
+              />
+            </MDBox>
+
+            <MDBox display="flex" alignItems="right" ml={0.6}>
+              <RadioGroup
+                sx={{ flexDirection: "row" }}
+                name="type"
+                value={user.type}
+                onChange={handleChange}
+              >
+                <FormControlLabel
+                  value="candidate"
+                  control={<Radio />}
+                  label="Candidate"
+                />
+                <FormControlLabel
+                  value="company"
+                  control={<Radio />}
+                  label="Company"
+                />
+              </RadioGroup>
             </MDBox>
 
             <MDBox display="flex" alignItems="center" ml={-1}>
@@ -104,7 +155,14 @@ function SignIn() {
             </MDBox>
 
             <MDBox mt={4} mb={1}>
-              <MDButton variant="gradient" color="info" fullWidth onClick={login} >register</MDButton>
+              <MDButton
+                variant="gradient"
+                color="info"
+                fullWidth
+                onClick={login}
+              >
+                Login
+              </MDButton>
             </MDBox>
 
             <MDBox mt={3} mb={1} textAlign="center">
