@@ -18,56 +18,40 @@ import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 import BasicLayout from "layouts/authentication/basicLayout";
 
 import Axios from "axios";
+import Cookies from "js-cookie";
 
 // Company Address
 
 function CompanyAddress() {
-  // const [company, setCompany] = usehrEmail({
-  //   //companyName: "",
-  //   hrEmail: "",
-  //   establishedYear: "",
-  //   aboutCompany: "",
-  //   addressLine1: ""
-  //   // hrEmail: "",
-  //   // establishedYear: "",
-  //   // about: "",
-  //   // hrMobileNo: "",
-  //   // hrEmail: "",
-  // });
+
 
   const [establishedYear, setEstablishedYear] = useState();
   const [aboutCompany, setAboutCompany] = useState();
   const [addressLine1, setAddressLine1] = useState();
 
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setCompany({
-  //     ...company,
-  //     [name]: value,
-  //   });
-  // };
+  const cookieUserid = Cookies.get("Userid");
+  alert(cookieUserid);
+
+  
   const save = () => {
-    // const {
-    //   hrEmail,
-    //   establishedYear,
-    //   aboutCompany,
-    //   addressLine1
-    //   // hrEmail,
-    //   // establishedYear,
-    //   // about,
-    //   // hrMobileNo,
-    //   // hrEmail,
-    // } = company;
-    Axios.put(
-      "http://localhost:7000/api/company/6405953e13e0468686ee043d/updateaddressbyid/",
-      {
-        establishedYear,
-        aboutCompany,
-        addressLine1,
-      }
-    )
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+
+    if(cookieUserid){
+      Axios.put(
+        `http://localhost:7000/api/company/${cookieUserid}/updateaddressbyid/`,
+        {
+          establishedYear,
+          aboutCompany,
+          addressLine1,
+        }
+      )
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+    }
+    else {
+      alert("Some Error Occured")
+    }
+
+    
   };
 
   return (

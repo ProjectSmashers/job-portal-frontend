@@ -18,6 +18,7 @@ import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 import BasicLayout from "layouts/authentication/basicLayout";
 
 import Axios from "axios";
+import Cookies from "js-cookie";
 
 // HR Details
 function CompanyHr() {
@@ -25,9 +26,15 @@ function CompanyHr() {
   const [mobileNo, setMobile] = useState("");
   //   const [aboutCompany, setAboutCompany] = useState();
 
+  const cookieUserid = Cookies.get("Userid");
+  alert(cookieUserid);
+
+  
   const save = () => {
+
+    if(cookieUserid){
     Axios.put(
-      "http://localhost:7000/api/company/6405953e13e0468686ee043d/updatehrdetails/",
+      `http://localhost:7000/api/company/${cookieUserid}/updatehrdetails/`,
       {
         email,
         mobileNo,
@@ -35,6 +42,10 @@ function CompanyHr() {
     )
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
+    }
+    else {
+      alert("Some error occured")
+    }
   };
 
   return (
@@ -92,7 +103,7 @@ function CompanyHr() {
                 Save
               </MDButton>
             </MDBox>
-            <MDBox mt={4} mb={1}>
+            {/* <MDBox mt={4} mb={1}>
               <MDButton
                 variant="gradient"
                 color="success"
@@ -100,6 +111,17 @@ function CompanyHr() {
                 href="/dashboard"
               >
                 Dashboard
+              </MDButton>
+            </MDBox> */}
+             <MDBox mt={4} mb={1}>
+              <MDButton
+                variant="gradient"
+                color="success"
+                fullWidth
+                href="/company-job-post"
+              >
+                 
+                 post 
               </MDButton>
             </MDBox>
           </MDBox>

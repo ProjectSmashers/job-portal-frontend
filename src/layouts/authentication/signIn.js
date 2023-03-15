@@ -20,6 +20,7 @@ import BasicLayout from "./basicLayout";
 import bgImage from "assets/images/bg-sign-in-basic.jpeg";
 
 import Axios from "axios";
+import Cookies from "js-cookie";
 
 function SignIn() {
   const [rememberMe, setRememberMe] = useState(false);
@@ -41,9 +42,18 @@ function SignIn() {
   const login = () => {
 
     const { email, password } = user
+
     if (email && password) {
-      Axios.post('http://localhost:7000/api/candidates/login', user)
-        .then(res => console.log(res))
+      Axios.post('http://localhost:7000/api/candidates/login', user, {withCredentials : true})
+        .then(res => 
+          {
+            console.log(res)
+            // const myVariable = sessionStorage.getItem('token');
+            // console.log(myVariable);
+            const cookieUserid = Cookies.get('Userid')
+            alert(cookieUserid);
+          })
+        // .then(const myVariable = sessionStorage.getItem('myVariableKey'))
         .catch(err => console.log(err))
     }
     else

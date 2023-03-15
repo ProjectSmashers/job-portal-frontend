@@ -22,14 +22,17 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import FolderIcon from '@mui/icons-material/Folder';
 import PageviewIcon from '@mui/icons-material/Pageview';
+
+import Cookies from "js-cookie";
+
 //Educational Details
 
 function CandidateEdu() {
   const [candidate, setCandidate] = useState({
     // Educational Details
-    languages: "",
-    programmingLanguages: "",
-    tools: "",
+    nameOfInstitute: "",
+    nameOfUniversity: "",
+    stream: "",
     admissionYear: "",
     passingYear: "",
     aggregate: "",
@@ -44,20 +47,31 @@ function CandidateEdu() {
 
   const save = () => {
     const {
-      languages,
-      programmingLanguages,
-      tools,
+      nameOfInstitute,
+      nameOfUniversity,
+      stream,
       admissionYear,
       passingYear,
       aggregate,
     } = candidate;
 
+    const cookieUserid = Cookies.get('Userid')
+    alert(cookieUserid);
+    if(cookieUserid)
+    {
     Axios.put(
-      "http://localhost:7000/api/candidates/63bac979734ecf4bfdbb1288/updateeducationbycandidateid/",
+      `http://localhost:7000/api/candidates/${cookieUserid}/updateeducationbycandidateid/`,
       candidate
     )
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res)
+        alert("Education Saved")
+      })
       .catch((err) => console.log(err));
+    }
+    else {
+      alert("Some error occured")
+    }
   };
 
   return (
@@ -84,8 +98,8 @@ function CandidateEdu() {
             <MDBox mb={2}>
               <MDInput
                 type="text"
-                name="languages"
-                value={candidate.languages}
+                name="nameOfInstitute"
+                value={candidate.nameOfInstitute}
                 label="Name of Institute"
                 fullWidth
                 onChange={handleChange}
@@ -95,8 +109,8 @@ function CandidateEdu() {
             <MDBox mb={2}>
               <MDInput
                 type="text"
-                name="programmingLanguages"
-                value={candidate.programmingLanguages}
+                name="nameOfUniversity"
+                value={candidate.nameOfUniversity}
                 label="Name of University"
                 fullWidth
                 onChange={handleChange}
@@ -106,9 +120,9 @@ function CandidateEdu() {
             <MDBox mb={2}>
               <MDInput
                 type="text"
-                name="tools"
-                value={candidate.tools}
-                label="tools"
+                name="stream"
+                value={candidate.stream}
+                label="Stream"
                 fullWidth
                 onChange={handleChange}
               />
