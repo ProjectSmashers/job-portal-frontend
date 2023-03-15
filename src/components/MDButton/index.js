@@ -7,22 +7,18 @@ import PropTypes from "prop-types";
 // Custom styles for MDButton
 import MDButtonRoot from "components/MDButton/MDButtonRoot";
 
-// Material Dashboard 2 React contexts
-import { useMaterialUIController } from "context";
 
 const MDButton = forwardRef(
   ({ color, variant, size, circular, iconOnly, children, ...rest }, ref) => {
-    const [controller] = useMaterialUIController();
-    const { darkMode } = controller;
 
     return (
       <MDButtonRoot
         {...rest}
         ref={ref}
-        color="primary"
+        color="secondary"
         variant={variant === "gradient" ? "contained" : variant}
         size={size}
-        ownerState={{ color, variant, size, circular, iconOnly, darkMode }}
+        ownerState={{ color, variant, size, circular, iconOnly }}
       >
         {children}
       </MDButtonRoot>

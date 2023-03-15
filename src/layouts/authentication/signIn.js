@@ -67,11 +67,12 @@ function SignIn() {
           "http://localhost:7000/api/company/login",
           { email, password },
           { withCredentials: true }
-        ).then((response) => {
-          consloe.log(response);
-          // SetCookie("userIn", JSON.stringify(response.data))
-          navigate("/dashboard");
-        });
+        )
+          .then((response) => {
+            consloe.log(response);
+            // SetCookie("userIn", JSON.stringify(response.data))
+            navigate("/dashboard");
+          });
       } catch (error) {
         console.log(error);
       }
@@ -98,7 +99,7 @@ function SignIn() {
         </MDBox>
 
         <MDBox pt={4} pb={3} px={3}>
-          <MDBox component="form" role="form">
+          <MDBox component="form" role="form" id="login-form">
             <MDBox mb={2}>
               <MDInput
                 type="email"
@@ -121,25 +122,17 @@ function SignIn() {
               />
             </MDBox>
 
+
+
             <MDBox display="flex" alignItems="right" ml={0.6}>
-              <RadioGroup
-                sx={{ flexDirection: "row" }}
-                name="type"
-                value={user.type}
-                onChange={handleChange}
-              >
-                <FormControlLabel
-                  value="candidate"
-                  control={<Radio />}
-                  label="Candidate"
-                />
-                <FormControlLabel
-                  value="company"
-                  control={<Radio />}
-                  label="Company"
-                />
+
+              <RadioGroup sx={{ flexDirection: 'row' }} name="type" value={user.type} onChange={handleChange}>
+                <FormControlLabel value="candidate" control={<Radio />} label="Candidate" />
+                <FormControlLabel value="company" control={<Radio />} label="Company" />
               </RadioGroup>
             </MDBox>
+
+
 
             <MDBox display="flex" alignItems="center" ml={-1}>
               <Switch checked={rememberMe} onChange={handleSetRememberMe} />
@@ -155,44 +148,37 @@ function SignIn() {
             </MDBox>
 
             <MDBox mt={4} mb={1}>
-              <MDButton
-                variant="gradient"
-                color="info"
-                fullWidth
-                onClick={login}
-              >
-                Login
-              </MDButton>
+              <MDButton variant="gradient" color="info" fullWidth onClick={login} >Login</MDButton>
             </MDBox>
+          </MDBox>
 
-            <MDBox mt={3} mb={1} textAlign="center">
-              <MDTypography variant="button" color="text">
-                Don&apos;t have an account?{" "}
-                <MDTypography
-                  component={Link}
-                  to="/authentication/sign-up"
-                  variant="button"
-                  color="info"
-                  fontWeight="medium"
-                  textGradient
-                >
-                  Sign up
-                </MDTypography>
-              </MDTypography>
-            </MDBox>
-
-            <MDBox mt={3} mb={1} textAlign="center">
+          <MDBox mt={3} mb={1} textAlign="center">
+            <MDTypography variant="button" color="text">
+              Don&apos;t have an account?{" "}
               <MDTypography
                 component={Link}
-                to="/authentication/reset-password"
+                to="/authentication/sign-up"
                 variant="button"
                 color="info"
                 fontWeight="medium"
                 textGradient
               >
-                Reset Password
+                Sign up
               </MDTypography>
-            </MDBox>
+            </MDTypography>
+          </MDBox>
+
+          <MDBox mt={3} mb={1} textAlign="center">
+            <MDTypography
+              component={Link}
+              to="/authentication/reset-password"
+              variant="button"
+              color="info"
+              fontWeight="medium"
+              textGradient
+            >
+              Reset Password
+            </MDTypography>
           </MDBox>
         </MDBox>
       </Card>

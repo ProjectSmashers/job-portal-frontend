@@ -21,30 +21,28 @@
 */
 
 // Material Dashboard 2 React layouts
-import Dashboard from "./layouts/dashboard-components/dashboard/dashboard";
-import Profile from "./layouts/dashboard-components/profile/profile";
-import Tables from "./layouts/dashboard-components/tables/appliedJobTable";
-import Notifications from "./layouts/dashboard-components/notifications/notification";
-import SignIn from "layouts/authentication/signIn";
-import SignUp from "layouts/authentication/signUp";
+import Dashboard from "../layouts/dashboard-components/dashboard/dashboard";
+import Profile from "../layouts/dashboard-components/profile/profile";
+import Tables from "../layouts/dashboard-components/tables/appliedJobTable";
 import ResetPassword from "layouts/authentication/resetPassword";
-import CandidateBasic from "layouts/candidateDetails/CandidateBasic";
-import CompanyAbout from "layouts/companyDetails/CompanyAbout";
 import Homepage from "layouts/landing-page/homePage";
-import CandidateBasic from "layouts/candidateDetails/CandidateBasic";
-import CompanyAbout from "layouts/companyDetails/CompanyAbout";
-
+import Logout from "../layouts/authentication/logout";
 
 
 // @mui icons
-import Icon from "@mui/material/Icon";
+import WorkIcon from '@mui/icons-material/Work';
+import ResetIcon from '@mui/icons-material/RestartAlt';
+import AccountIcon from '@mui/icons-material/AccountBox';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import HomeIcon from '@mui/icons-material/Home';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const routes = [
   {
     type: "collapse",
     name: "Home",
     key: "home",
-    icon: <Icon fontSize="small">Home</Icon>,
+    icon: <HomeIcon color="white" />,
     route: "/home",
     component: <Homepage />,
   },
@@ -52,7 +50,7 @@ const routes = [
     type: "collapse",
     name: "Dashboard",
     key: "dashboard",
-    icon: <Icon fontSize="small">dashboard</Icon>,
+    icon: <DashboardIcon color="white" />,
     route: "/dashboard",
     component: <Dashboard />,
   },
@@ -60,67 +58,35 @@ const routes = [
     type: "collapse",
     name: "Profile",
     key: "profile",
-    icon: <Icon fontSize="small">person</Icon>,
+    icon: <AccountIcon color="white" />,
     route: "/profile",
     component: <Profile />,
   },
   {
     type: "collapse",
-    name: "Available Job List",
-    key: "availableJobList",
-    icon: <Icon fontSize="small">table_view</Icon>,
+    name: "Available Job's",
+    key: "availableJob",
+    icon: <WorkIcon color="white" />,
     route: "/tables",
     component: <Tables />,
   },
   {
     type: "collapse",
-    name: "Notifications",
-    key: "notifications",
-    icon: <Icon fontSize="small">notifications</Icon>,
-    route: "/notifications",
-    component: <Notifications />,
-  },
-  {
-    type: "collapse",
-    name: "Sign In",
-    key: "sign-in",
-    icon: <Icon fontSize="small">login</Icon>,
-    route: "/authentication/sign-in",
-    component: <SignIn />,
-  },
-  {
-    type: "collapse",
-    name: "Sign Up",
-    key: "sign-up",
-    icon: <Icon fontSize="small">assignment</Icon>,
-    route: "/authentication/sign-up",
-    component: <SignUp />,
-  },
-  {
-    type: "collapse",
     name: "Reset Password",
     key: "reset-password",
-    icon: <Icon fontSize="small">assignment</Icon>,
+    icon: <ResetIcon color="white" />,
     route: "/authentication/reset-password",
-    component: <ResetPassword />
+    component: <ResetPassword />,
+  },
+  {
+    type: "collapse",
+    name: "Logout",
+    key: "logout",
+    icon: <LogoutIcon color="white" />,
+    route: "/home",
+    component: <Logout />,
+  }
 
-  },
-  {
-    type: "collapse",
-    name: "Candidate Details",
-    key: "candidate-details",
-    icon: <Icon fontSize="small">assignment</Icon>,
-    route: "/candidate-details",
-    component: <CandidateBasic />
-  },
-  {
-    type: "collapse",
-    name: "Company Details",
-    key: "company-details",
-    icon: <Icon fontSize="small">assignment</Icon>,
-    route: "/company-details",
-    component: <CompanyAbout />,
-  },
 ];
 
 export default routes;

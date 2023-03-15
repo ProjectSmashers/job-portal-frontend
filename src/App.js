@@ -14,35 +14,27 @@ import Sidenav from "./layouts/dashboard-components/sidenav/sidenav";
 import theme from "assets/theme";
 
 // Material Dashboard 2 React routes
-import routes from "routes";
+import routes from "routes/routes";
 
 // Material Dashboard 2 React contexts
-import { useMaterialUIController } from "context";
+import { useMaterialUIController } from "context/sidenavcontext";
 
+
+import SignIn from "layouts/authentication/signIn";
+import SignUp from "layouts/authentication/signUp";
+import CompanyAbout from "layouts/companyDetails/CompanyAbout";
 import CandidateBasic from "layouts/candidateDetails/CandidateBasic";
 import CandidateEdu from "layouts/candidateDetails/CandidateEdu";
 import CandidateSkills from "layouts/candidateDetails/CandidateSkills";
 import CompanyAddress from "layouts/companyDetails/CompanyAddress";
-import CompanyAbout from "layouts/companyDetails/CompanyAbout";
 import CompanyHr from "layouts/companyDetails/CompanyHr";
 import CompanyJobPost from "layouts/companyDetails/CompanyJobPost";
 
 
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
-  const { direction, layout, sidenavColor } = controller;
-  const { pathname } = useLocation();
+  const { layout } = controller;
 
-  // Setting the dir attribute for the body element
-  useEffect(() => {
-    document.body.setAttribute("dir", direction);
-  }, [direction]);
-
-  // Setting page scroll to 0 when changing the route
-  useEffect(() => {
-    document.documentElement.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
-  }, [pathname]);
 
   const getRoutes = (allRoutes) =>
     allRoutes.map((route) => {
@@ -72,17 +64,19 @@ export default function App() {
           <Sidenav brandName="Material Dashboard 2" routes={routes} />
         </>
       )}
-      {layout === "vr"}
+
       <Routes>
         {getRoutes(routes)}
-        <Route path="*" element={<Navigate to="/dashboard" />} />
-        <Route path="/candidate-basic" element={<CandidateBasic/>} />
-        <Route path="/candidate-edu" element={<CandidateEdu/>} />
-        <Route path="/candidate-skills" element={<CandidateSkills/>} />
-        <Route path="/company-about" element={<CompanyAbout/>} />
-        <Route path="/company-address" element={<CompanyAddress/>} />
-        <Route path="/company-hr" element={<CompanyHr/>} />
-        <Route path="/company-job-post" element={<CompanyJobPost/>} />
+        <Route path="*" element={<Navigate to="/home" />} />
+        <Route path="/candidate-basic" element={<CandidateBasic />} />
+        <Route path="/candidate-edu" element={<CandidateEdu />} />
+        <Route path="/candidate-skills" element={<CandidateSkills />} />
+        <Route path="/company-about" element={<CompanyAbout />} />
+        <Route path="/company-address" element={<CompanyAddress />} />
+        <Route path="/company-hr" element={<CompanyHr />} />
+        <Route path="/company-job-post" element={<CompanyJobPost />} />
+        <Route path="/authentication/sign-up" element={<SignUp />} />
+        <Route path="/authentication/sign-in" element={<SignIn />} />
 
       </Routes>
     </ThemeProvider>

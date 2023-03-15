@@ -74,10 +74,12 @@ function JobList() {
         <DataTable
           table={{
             columns: [
-              { Header: "companies", accessor: "companyName", width: "45%", align: "left" },
-              { Header: "members", accessor: "jobName", width: "10%", align: "left" },
-              { Header: "budget", accessor: "budget", align: "center" },
-              { Header: "completion", accessor: "completion", align: "center" },
+              { Header: "Company Name", accessor: "companyName", width: "45%", align: "left" },
+              { Header: "Job Description", accessor: "jobDescription", width: "10%", align: "left" },
+              { Header: "Type Of Job", accessor: "typeOfJob", align: "center" },
+              { Header: "Mode Of Job", accessor: "modeOfJob", align: "center" },
+              { Header: "Responsibility", accessor: "responsibility", align: "center" },
+              { Header: "Requirment", accessor: "requirment", align: "center" },
             ],
 
             rows: [

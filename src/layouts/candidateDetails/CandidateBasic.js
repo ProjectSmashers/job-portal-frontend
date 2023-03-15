@@ -57,10 +57,9 @@ function CandidateBasic() {
 
     const cookieUserid = Cookies.get('Userid')
     alert(cookieUserid);
-    if(cookieUserid)
-    {
+    if (cookieUserid) {
       Axios.put(
-     
+
         `http://localhost:7000/api/candidates/${cookieUserid}/basicdetail/`,
         candidate
       )
@@ -69,11 +68,11 @@ function CandidateBasic() {
           alert("Basic Details Saved");
         })
         .catch((err) => console.log(err));
-    }    
-    else{
+    }
+    else {
       alert("Some Error Occured.")
     }
-    
+
 
   };
 
